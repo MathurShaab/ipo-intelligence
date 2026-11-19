@@ -308,3 +308,22 @@ body {
     box-shadow: 12px 0 40px rgba(0, 0, 0, 0.7);
   }
 }
+
+/* Phase 3 Mobile & Desktop Responsiveness Enhancements */
+.table-responsive {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 575.98px) {
+  .kpi-value {
+    font-size: 1.25rem;
+  }
+  .chart-wrapper {
+    height: 220px;
+  }
+  .fintech-table thead th,
+  .fintech-table tbody td {
+    padding: 0.65rem 0.65rem;
+    font-size: 0.8125rem;
+  }
+}

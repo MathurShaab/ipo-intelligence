@@ -104,15 +104,12 @@
         });
         break;
       case 'ipo-detail':
-        await window.DetailPage.render(view, routeParam || 'demo-ipo-001');
+        const fallbackList = await window.ipoService.fetchAllIPOs();
+        const defaultId = fallbackList.length ? fallbackList[0].id : 'demo-ipo-001';
+        await window.DetailPage.render(view, routeParam || defaultId);
         break;
       case 'gmp-tracker':
-        window.PhasedViews.renderPhaseNotice(view, {
-          title: 'Grey Market Premium (GMP) Tracker',
-          phaseNumber: 3,
-          icon: 'bi-activity',
-          phaseScope: 'Phase 3 builds the dedicated GMP Tracker with multi-day GMP trend charts, indicative listing price calculations, previous vs current delta tracking, and unofficial-data disclaimers.'
-        });
+        await window.GMPTrackerPage.render(view, routeParam || null);
         break;
       case 'company-analysis':
         window.PhasedViews.renderPhaseNotice(view, {
