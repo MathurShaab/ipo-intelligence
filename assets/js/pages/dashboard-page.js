@@ -200,19 +200,25 @@ window.DashboardPage = {
                     </tr>
                   </thead>
                   <tbody>
-                    ${metrics.listedIPOs.map((ipo) => {
+                    ${metrics.listedIPOs.length === 0 ? `
+                      <tr><td colspan="5" class="text-center text-secondary py-3 small">No listed IPO records returned yet.</td></tr>
+                    ` : metrics.listedIPOs.slice(0, 8).map((ipo) => {
                       const lp = ipo.listingPerformance;
-                      const gainCls = lp.listingGainPct >= 0 ? 'text-success' : 'text-danger';
+                      const issuePrice = lp?.issuePrice ?? ipo.priceBand?.max ?? null;
+                      const listingPrice = lp?.listingPrice ?? null;
+                      const gainPct = typeof lp?.listingGainPct === 'number' ? lp.listingGainPct : null;
+                      const cmp = lp?.cmp ?? null;
+                      const gainCls = gainPct === null ? 'text-secondary' : gainPct >= 0 ? 'text-success' : 'text-danger';
                       return `
                         <tr>
                           <td>
                             <a href="#ipo-detail/${ipo.id}" class="text-white fw-medium text-decoration-none d-block">${ipo.companyName}</a>
                             <span class="text-secondary" style="font-size:0.7rem;">${ipo.board} &bull; Listed ${ipo.dates.listing}</span>
                           </td>
-                          <td class="font-mono">₹${lp.issuePrice}</td>
-                          <td class="font-mono">₹${lp.listingPrice}</td>
-                          <td class="font-mono fw-semibold ${gainCls}">${lp.listingGainPct >= 0 ? '+' : ''}${lp.listingGainPct.toFixed(2)}%</td>
-                          <td class="font-mono text-light">₹${lp.cmp}</td>
+                          <td class="font-mono">${issuePrice ? '₹' + issuePrice : '—'}</td>
+                          <td class="font-mono">${listingPrice ? '₹' + listingPrice : '—'}</td>
+                          <td class="font-mono fw-semibold ${gainCls}">${gainPct !== null ? (gainPct >= 0 ? '+' : '') + gainPct.toFixed(2) + '%' : 'Pending'}</td>
+                          <td class="font-mono text-light">${cmp ? '₹' + cmp : '—'}</td>
                         </tr>
                       `;
                     }).join('')}
