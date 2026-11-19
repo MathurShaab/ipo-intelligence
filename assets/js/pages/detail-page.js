@@ -112,7 +112,7 @@ window.DetailPage = {
               <a href="#gmp-tracker/${ipo.id}" class="btn btn-sm btn-outline-info">
                 <i class="bi bi-activity me-1"></i> GMP Tracker
               </a>
-              <a href="#company-analysis" class="btn btn-sm btn-outline-light">
+              <a href="#company-analysis/${ipo.id}" class="btn btn-sm btn-outline-light">
                 <i class="bi bi-building-gear me-1"></i> Full Analysis
               </a>
             </div>
@@ -295,7 +295,7 @@ window.DetailPage = {
               <h6 class="text-white fw-semibold mb-0"><i class="bi bi-cash-coin text-warning me-2"></i>Financial Highlights &amp; Valuation Snapshot</h6>
               <span class="text-secondary small">Key restated financial metrics (${ipo.isDemo ? 'Illustrative Demo Data' : 'Exchange / Company Filings'})</span>
             </div>
-            <a href="#company-analysis" class="btn btn-sm btn-outline-light">Deep Fundamental Analysis</a>
+            <a href="#company-analysis/${ipo.id}" class="btn btn-sm btn-outline-light">Deep Fundamental Analysis</a>
           </div>
           ${
             ipo.financials

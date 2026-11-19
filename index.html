@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232563eb%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>IP</text></svg>">
-  <title>IPO Intelligence — Indian IPO Research & Analysis Platform</title>
+  <title>IPO Intelligence — Indian IPO Research &amp; Analysis Platform</title>
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,18 +17,21 @@
   <link rel="stylesheet" href="assets/css/theme.css">
 </head>
 <body>
-  <!-- Top Demo Banner -->
+  <!-- Top Environment & Disclaimer Bar -->
   <div class="demo-disclaimer-bar">
     <div class="container-fluid px-3 px-lg-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
       <div class="d-flex align-items-center gap-2">
-        <span class="badge bg-warning text-dark fw-bold">DEMO ENVIRONMENT</span>
-        <span class="small">All IPO records, financials, GMP figures, and dates are <strong>illustrative sample data</strong> for architectural &amp; research demonstration only.</span>
+        <span class="badge bg-info text-dark fw-bold">IPO INTELLIGENCE</span>
+        <span class="small">Indian Primary Market Research &amp; Analytics &mdash; Live EJI Feed + Illustrative Demo Support.</span>
       </div>
       <div class="small text-secondary font-monospace">
-        Provider: <span id="active-provider-badge" class="text-info">DemoProvider v1.0</span>
+        Provider: <span id="active-provider-badge" class="text-info">Initializing...</span>
       </div>
     </div>
   </div>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
 
   <div class="app-wrapper d-flex">
     <!-- Sidebar Navigation -->
@@ -125,28 +128,28 @@
       <div class="sidebar-footer p-3 border-top border-subtle">
         <div class="p-2 rounded bg-surface-2 border border-subtle">
           <div class="d-flex align-items-center justify-content-between mb-1">
-            <span class="small fw-semibold text-light">API Readiness</span>
-            <span class="badge bg-info-subtle text-info">Standby</span>
+            <span class="small fw-semibold text-light">Production Build</span>
+            <span class="badge bg-success-subtle text-success">v1.0 Ready</span>
           </div>
           <p class="mb-0 text-secondary" style="font-size: 0.72rem;">
-            Adapter layer active. External feeds decoupled until Phase 7.
+            Modular DataProvider &amp; Vercel Serverless Proxy active.
           </p>
         </div>
       </div>
     </aside>
 
     <!-- Main Content Area -->
-    <div class="main-content flex-grow-1 d-flex flex-column min-w-0">
+    <div class="main-content d-flex flex-column">
       <!-- Top Header -->
-      <header class="topbar sticky-top px-3 px-lg-4 py-2 border-bottom border-subtle d-flex align-items-center justify-content-between gap-3">
-        <div class="d-flex align-items-center gap-2">
+      <header class="topbar sticky-top px-3 px-lg-4 py-2 border-bottom border-subtle d-flex align-items-center justify-content-between gap-2 gap-md-3">
+        <div class="d-flex align-items-center gap-2 min-w-0">
           <button id="sidebar-toggle" class="btn btn-outline-secondary btn-sm d-lg-none" aria-label="Toggle Menu">
             <i class="bi bi-list fs-5"></i>
           </button>
-          <div id="page-breadcrumb" class="d-flex align-items-center gap-2">
-            <span class="text-secondary small d-none d-sm-inline">IPO Intelligence</span>
-            <span class="text-secondary small d-none d-sm-inline">/</span>
-            <span id="current-page-title" class="fw-semibold text-white">Market Dashboard</span>
+          <div id="page-breadcrumb" class="d-flex align-items-center gap-2 text-truncate">
+            <span class="text-secondary small d-none d-md-inline">IPO Intelligence</span>
+            <span class="text-secondary small d-none d-md-inline">/</span>
+            <span id="current-page-title" class="fw-semibold text-white text-truncate">Market Dashboard</span>
           </div>
         </div>
 
@@ -155,7 +158,7 @@
             <span class="input-group-text bg-surface-2 border-subtle text-secondary">
               <i class="bi bi-search"></i>
             </span>
-            <input type="text" id="global-search-input" class="form-control bg-surface-2 border-subtle text-white" placeholder="Quick search demo IPOs by name, sector, or symbol...">
+            <input type="text" id="global-search-input" class="form-control bg-surface-2 border-subtle text-white" placeholder="Search IPOs by name or symbol...">
           </div>
           <a href="#watchlist" class="btn btn-sm btn-outline-primary position-relative text-nowrap" title="View Watchlist">
             <i class="bi bi-bookmark-fill"></i>
@@ -166,7 +169,7 @@
       </header>
 
       <!-- Dynamic Route View Container -->
-      <main id="app-view" class="container-fluid px-3 px-lg-4 py-4 flex-grow-1">
+      <main id="app-view" class="container-fluid px-3 px-lg-4 py-3 py-md-4 flex-grow-1">
         <!-- Rendered dynamically by router -->
       </main>
 
@@ -174,36 +177,64 @@
       <footer class="border-top border-subtle px-3 px-lg-4 py-3 mt-auto bg-surface-1">
         <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 small text-secondary">
           <div>
-            <strong>IPO Intelligence</strong> &mdash; Modular Indian Primary Market Research Platform (Phases 1 &amp; 2 Build)
+            <strong>IPO Intelligence</strong> &mdash; Production Indian Primary Market Research &amp; Analytics Platform
           </div>
           <div>
-            Disclaimer: Demo dataset only. Not SEBI-registered investment advice. Grey Market Premium (GMP) is unofficial &amp; speculative.
+            Disclaimer: Informational research only. Not SEBI-registered investment advice. Grey Market Premium (GMP) is unofficial &amp; speculative.
           </div>
         </div>
       </footer>
     </div>
   </div>
 
+  <!-- Mobile Bottom Quick Navigation Bar (< 992px) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Quick Navigation">
+    <a href="#dashboard" data-route="dashboard" class="active">
+      <i class="bi bi-grid-1x2"></i>
+      <span>Home</span>
+    </a>
+    <a href="#current" data-route="current">
+      <i class="bi bi-broadcast"></i>
+      <span>Open</span>
+    </a>
+    <a href="#gmp-tracker" data-route="gmp-tracker">
+      <i class="bi bi-activity"></i>
+      <span>GMP</span>
+    </a>
+    <a href="#company-analysis" data-route="company-analysis">
+      <i class="bi bi-building-gear"></i>
+      <span>Analysis</span>
+    </a>
+    <a href="#watchlist" data-route="watchlist">
+      <i class="bi bi-bookmark-star"></i>
+      <span>Saved</span>
+    </a>
+  </nav>
+
   <!-- Toast Container for Notifications -->
-  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container"></div>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3 mb-5 mb-lg-0" id="toast-container"></div>
 
   <!-- Bootstrap 5 Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
-  <!-- Application Scripts (Modular ES5/ES6 Vanilla JS without external bundler) -->
+  <!-- Application Scripts -->
   <script src="assets/js/config.js"></script>
   <script src="assets/js/data/demo-ipos.js"></script>
   <script src="assets/js/services/data-provider.js"></script>
   <script src="assets/js/services/ipo-service.js"></script>
   <script src="assets/js/services/watchlist-service.js"></script>
+  <script src="assets/js/services/scoring-engine.js"></script>
   <script src="assets/js/components/ui-components.js"></script>
   <script src="assets/js/pages/dashboard-page.js"></script>
   <script src="assets/js/pages/listing-pages.js"></script>
   <script src="assets/js/pages/detail-page.js"></script>
   <script src="assets/js/pages/gmp-tracker-page.js"></script>
-  <script src="assets/js/pages/placeholder-phases.js"></script>
+  <script src="assets/js/pages/company-analysis-page.js"></script>
+  <script src="assets/js/pages/comparison-page.js"></script>
+  <script src="assets/js/pages/calculators-page.js"></script>
+  <script src="assets/js/pages/watchlist-page.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
