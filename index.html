@@ -141,7 +141,8 @@
     <!-- Main Content Area -->
     <div class="main-content d-flex flex-column">
       <!-- Top Header -->
-      <header class="topbar sticky-top px-3 px-lg-4 py-2 border-bottom border-subtle d-flex align-items-center justify-content-between gap-2 gap-md-3">
+      <header class="topbar sticky-top px-3 px-lg-4 py-2 border-bottom border-subtle">
+        <div class="d-flex align-items-center justify-content-between gap-2 gap-md-3 w-100">
         <div class="d-flex align-items-center gap-2 min-w-0">
           <button id="sidebar-toggle" class="btn btn-outline-secondary btn-sm d-lg-none" aria-label="Toggle Menu">
             <i class="bi bi-list fs-5"></i>
@@ -153,18 +154,33 @@
           </div>
         </div>
 
-        <div class="d-flex align-items-center gap-2 flex-grow-1 justify-content-end" style="max-width: 520px;">
-          <div class="input-group input-group-sm">
+        <div class="d-flex align-items-center gap-2 justify-content-end topbar-actions flex-shrink-0">
+          <div class="input-group input-group-sm topbar-search-group d-none d-md-flex">
             <span class="input-group-text bg-surface-2 border-subtle text-secondary">
               <i class="bi bi-search"></i>
             </span>
             <input type="text" id="global-search-input" class="form-control bg-surface-2 border-subtle text-white" placeholder="Search IPOs by name or symbol...">
           </div>
+          <button id="mobile-search-toggle" class="btn btn-sm btn-outline-secondary d-md-none" type="button" aria-label="Toggle Search">
+            <i class="bi bi-search"></i>
+          </button>
           <a href="#watchlist" class="btn btn-sm btn-outline-primary position-relative text-nowrap" title="View Watchlist">
             <i class="bi bi-bookmark-fill"></i>
             <span class="d-none d-md-inline ms-1">Watchlist</span>
             <span class="badge bg-primary ms-1" id="header-watchlist-count">0</span>
           </a>
+        </div>
+        <!-- Collapsible Mobile Search Drawer Bar -->
+        <div id="mobile-search-drawer" class="mobile-search-drawer d-md-none mt-2" style="display: none;">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text bg-surface-2 border-subtle text-secondary">
+              <i class="bi bi-search"></i>
+            </span>
+            <input type="text" id="mobile-search-input" class="form-control bg-surface-2 border-subtle text-white" placeholder="Search IPOs by name or symbol...">
+            <button id="mobile-search-clear" class="btn btn-outline-secondary" type="button" aria-label="Clear Search">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -177,7 +193,7 @@
       <footer class="border-top border-subtle px-3 px-lg-4 py-3 mt-auto bg-surface-1">
         <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 small text-secondary">
           <div>
-            <strong>IPO Intelligence</strong> &mdash; Production Indian Primary Market Research &amp; Analytics Platform
+            <strong>IPO Intelligence</strong> &mdash; Developed by <a href="https://mathurshaab.github.io/JatinMathur/" target="_blank" rel="noopener noreferrer" class="text-info text-decoration-none fw-semibold">Jatin Mathur</a>
           </div>
           <div>
             Disclaimer: Informational research only. Not SEBI-registered investment advice. Grey Market Premium (GMP) is unofficial &amp; speculative.

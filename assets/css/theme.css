@@ -396,3 +396,12 @@ body {
     padding: 0.32rem 0.65rem;
   }
 }
+
+/* Header Search Responsiveness */
+.topbar-search-group {
+  width: 300px;
+}
+
+.mobile-search-drawer .input-group {
+  width: 100%;
+}

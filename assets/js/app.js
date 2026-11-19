@@ -153,14 +153,39 @@
     if (backdrop) backdrop.addEventListener('click', closeMobileDrawer);
 
     const globalSearch = document.getElementById('global-search-input');
+    const mobileSearch = document.getElementById('mobile-search-input');
+    const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+    const mobileSearchDrawer = document.getElementById('mobile-search-drawer');
+    const mobileSearchClear = document.getElementById('mobile-search-clear');
+
+    const handleSearchInput = async (query, sourceInput) => {
+      if (globalSearch && sourceInput !== globalSearch) globalSearch.value = query;
+      if (mobileSearch && sourceInput !== mobileSearch) mobileSearch.value = query;
+      const currentHash = window.location.hash.replace(/^#/, '') || 'dashboard';
+      if (currentHash !== 'dashboard') {
+        window.location.hash = '#dashboard';
+      }
+      await window.DashboardPage.render(document.getElementById('app-view'), query);
+    };
+
     if (globalSearch) {
-      globalSearch.addEventListener('input', async (e) => {
-        const query = e.target.value;
-        const currentHash = window.location.hash.replace(/^#/, '') || 'dashboard';
-        if (currentHash !== 'dashboard') {
-          window.location.hash = '#dashboard';
-        }
-        await window.DashboardPage.render(document.getElementById('app-view'), query);
+      globalSearch.addEventListener('input', (e) => handleSearchInput(e.target.value, globalSearch));
+    }
+    if (mobileSearch) {
+      mobileSearch.addEventListener('input', (e) => handleSearchInput(e.target.value, mobileSearch));
+    }
+    if (mobileSearchToggle && mobileSearchDrawer) {
+      mobileSearchToggle.addEventListener('click', () => {
+        const isHidden = mobileSearchDrawer.style.display === 'none' || !mobileSearchDrawer.style.display;
+        mobileSearchDrawer.style.display = isHidden ? 'block' : 'none';
+        if (isHidden && mobileSearch) mobileSearch.focus();
+      });
+    }
+    if (mobileSearchClear && mobileSearchDrawer) {
+      mobileSearchClear.addEventListener('click', async () => {
+        if (mobileSearch) mobileSearch.value = '';
+        mobileSearchDrawer.style.display = 'none';
+        await handleSearchInput('', mobileSearchClear);
       });
     }
 
